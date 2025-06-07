@@ -8,7 +8,7 @@ django-chrono is a helper class for date and time operations in Django projects.
 #### 1. String ↔ Datetime
 
 ```python
-from datetime_utils import ChronoUtils
+from django_chrono import ChronoUtils
 
 dt = ChronoUtils.str_to_datetime("2025-06-07 16:30:00")
 dt_str = ChronoUtils.datetime_to_str(dt, fmt="%d.%m.%Y %H:%M")
@@ -19,7 +19,7 @@ dt_str = ChronoUtils.datetime_to_str(dt, fmt="%d.%m.%Y %H:%M")
 
 ```python
 import datetime
-from datetime_utils import ChronoUtils
+from django_chrono import ChronoUtils
 
 d = datetime.date(2025, 6, 7)
 dt = ChronoUtils.date_to_datetime(d)  # 2025-06-07 00:00:00
@@ -62,7 +62,7 @@ start_week, end_week = ChronoUtils.get_week_bounds(today, start_of_week=0)  # Mo
 #### 7. Add/Subtract Weeks, Months, Years
 
 ```python
-from datetime_utils import ChronoUtils
+from django_chrono import ChronoUtils
 
 dt = datetime.date(2025, 6, 7)
 dt_plus_2w = ChronoUtils.add_weeks(dt, 2)   # +2 weeks
