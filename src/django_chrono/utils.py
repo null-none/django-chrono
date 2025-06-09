@@ -1,6 +1,9 @@
+import pytz
+
 from datetime import datetime, date, time, timedelta
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
+from dateutil.parser import parse
 
 
 class ChronoUtils:
@@ -8,9 +11,9 @@ class ChronoUtils:
     @staticmethod
     def str_to_datetime(dt_str, fmt="%Y-%m-%d %H:%M:%S", tz=None):
         """Convert string to datetime (with optional timezone)."""
-        dt = datetime.strptime(dt_str, fmt)
+        dt = parse(str(dt_str))
         if tz:
-            return timezone.make_aware(dt, tz)
+            dt = timezone.localtime(dt, pytz.timezone(tz))
         return dt
 
     @staticmethod
@@ -19,6 +22,11 @@ class ChronoUtils:
         if timezone.is_aware(dt):
             dt = timezone.localtime(dt)
         return dt.strftime(fmt)
+
+    @staticmethod
+    def datetime_to_str_tz(dt, fmt="%Y-%m-%d %H:%M:%S", tz=None):
+        """Convert datetime to string with timezone."""
+        return timezone.localtime(dt, pytz.timezone(tz)).strftime(fmt)
 
     @staticmethod
     def date_to_datetime(d, tz=None):
