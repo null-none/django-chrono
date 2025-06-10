@@ -125,22 +125,22 @@ class ChronoUtils:
     @staticmethod
     def add_months(dt, months):
         """Add N months."""
-        return dt + relativedelta(months=months)
+        return dt + relativedelta(months=months, day=0)
 
     @staticmethod
     def sub_months(dt, months):
         """Subtract N months."""
-        return dt - relativedelta(months=months)
+        return dt - relativedelta(months=months, day=0)
 
     @staticmethod
     def add_years(dt, years):
         """Add N years."""
-        return dt + relativedelta(years=years)
+        return dt + relativedelta(years=years, months=0)
 
     @staticmethod
     def sub_years(dt, years):
         """Subtract N years."""
-        return dt - relativedelta(years=years)
+        return dt - relativedelta(years=years, months=0)
 
     @staticmethod
     def diff_in_weeks(dt1, dt2):
