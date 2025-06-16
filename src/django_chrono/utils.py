@@ -24,7 +24,7 @@ class ChronoUtils:
         return dt.strftime(fmt)
 
     @staticmethod
-    def datetime_to_str_tz(dt, fmt="%Y-%m-%d %H:%M:%S", tz=None):
+    def datetime_to_str_tz(dt, fmt="%Y-%m-%d %H:%M:%S", tz="UTC"):
         """Convert datetime to string with timezone."""
         return timezone.localtime(dt, pytz.timezone(tz)).strftime(fmt)
 
@@ -158,3 +158,15 @@ class ChronoUtils:
         """Absolute difference in years."""
         rd = relativedelta(dt1, dt2)
         return abs(rd.years)
+
+    @staticmethod
+    def diff_in_days(dt1, dt2):
+        """
+        Absolute difference in days between two dates/datetimes.
+        Returns an integer (abs).
+        """
+        if isinstance(dt1, datetime):
+            dt1 = dt1.date()
+        if isinstance(dt2, datetime):
+            dt2 = dt2.date()
+        return abs((dt1 - dt2).days)
