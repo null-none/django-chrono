@@ -113,6 +113,16 @@ class ChronoUtils:
         )
 
     @staticmethod
+    def add_days(dt, days):
+        """Add N days."""
+        return dt + timedelta(days=days)
+
+    @staticmethod
+    def sub_days(dt, days):
+        """Subtract N days."""
+        return dt - timedelta(days=days)
+
+    @staticmethod
     def add_weeks(dt, weeks):
         """Add N weeks."""
         return dt + timedelta(weeks=weeks)
